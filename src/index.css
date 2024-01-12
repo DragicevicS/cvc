@@ -1,0 +1,54 @@
+@import url("https://fonts.googleapis.com/css2?family=Kalnia:wght@500&family=Roboto&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply p-0 m-0 box-border scroll-smooth;
+  }
+
+  /* Scrollbar */
+
+  ::-webkit-scrollbar {
+    @apply w-[6px];
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-lightBlue;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-darkBlue;
+  }
+
+  /* Input autocomplete */
+
+  :-webkit-autofill,
+  :-webkit-autofill:hover,
+  :-webkit-autofill:focus {
+    -webkit-background-clip: text;
+    -webkit-box-shadow: none;
+    -webkit-text-fill-color: #fff;
+  }
+
+  /* File input button */
+
+  input::file-selector-button {
+    @apply px-3 py-1 border-2 bg-darkGray text-white appearance-none border-lightBlue hover:bg-lightGray transition-all duration-500 ease-in cursor-pointer;
+  }
+
+  /* MUI Accordion */
+
+  #accordion-0,
+  #accordion-1,
+  #accordion-2,
+  #accordion-3 {
+    @apply bg-darkGray text-white;
+  }
+}
