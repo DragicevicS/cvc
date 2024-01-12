@@ -31,7 +31,7 @@ const Editor: React.FC<EditorProps> = ({
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleAccordionChange =
-    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+    (panel: string) => (_event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
 
