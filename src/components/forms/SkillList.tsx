@@ -38,21 +38,23 @@ const SkillList: React.FC = () => {
             <input
               type="text"
               id={`skill-${skill.id}`}
-              className="relative pt-1 pb-1.5 w-[80%] hover:w-[81%] focus:w-[81%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white ease-in-out duration-300"
+              className="relative pt-1 pb-1.5 w-[83%] hover:w-[84%] focus:w-[84%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white ease-in-out duration-300"
               value={skill.skill}
               onChange={(e) => handleListInput(index, e.target.value)}
             />
-            <div className="absolute top-1/2 -translate-y-1/2 left-[60%] group">
+            <div
+              className="absolute top-1/2 -translate-y-1/2 left-[65%] group"
+              onClick={() => handleListDelete(index)}
+            >
               <img
                 src={deleteIcon}
                 alt="Delete"
-                className="w-6 h-6 cursor-pointer group-hover:hidden"
+                className="w-6 h-6 cursor-pointer lg:group-hover:hidden"
               />
               <img
                 src={deleteHoverIcon}
                 alt="Delete"
-                className="w-6 h-6 cursor-pointer hidden group-hover:block group-hover:scale-110 group-hover:-translate-y-[8%]"
-                onClick={() => handleListDelete(index)}
+                className="w-6 h-6 cursor-pointer hidden lg:group-hover:block lg:group-hover:scale-110 lg:group-hover:-translate-y-[8%]"
               />
             </div>
           </div>

@@ -28,16 +28,16 @@ const App: React.FC = () => {
       }}
       modules={[EffectCube]}
       loop={true}
-      className="w-full h-full overflow-hidden"
+      className="w-full h-screen overflow-hidden"
     >
-      <SwiperSlide className="flex flex-col justify-evenly items-center h-full">
+      <SwiperSlide className="flex flex-col justify-evenly items-center h-screen">
         <h1 className="text-3xl font-serif">CV Creator</h1>
         <Home />
         <button type="button" onClick={goToNextSlide}>
           Select
         </button>
       </SwiperSlide>
-      <SwiperSlide className="flex flex-col justify-evenly items-center h-full">
+      <SwiperSlide className="flex flex-col justify-evenly items-center h-screen">
         <Creator goToPrevSlide={goToPrevSlide} />
       </SwiperSlide>
     </Swiper>
