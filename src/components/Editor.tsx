@@ -53,7 +53,7 @@ const Editor: React.FC<EditorProps> = ({
 
   return (
     <div
-      className={`fixed bottom-0 lg:left-0 flex flex-col items-center w-screen sm:w-[85vw] md:w-[80vw] lg:w-1/3 h-[96vh] lg:h-full bg-darkGray text-white ${
+      className={`fixed bottom-0 lg:left-0 flex flex-col items-center w-screen sm:w-[85vw] md:w-[80vw] lg:w-1/3 h-[96%] lg:h-full bg-darkGray text-white ${
         !sidebarShow && isSmallScreen
           ? "translate-y-full"
           : !sidebarShow && !isSmallScreen && "-translate-x-full"
@@ -131,7 +131,7 @@ const Editor: React.FC<EditorProps> = ({
       </div>
       {isSmallScreen ? (
         <div
-          className="absolute -top-5 flex flex-col justify-center items-center gap-[1px] h-5 w-full bg-darkGray cursor-pointer rotate-180"
+          className="absolute -top-6 flex flex-col justify-center items-center gap-[1px] h-6 w-full bg-darkGray rounded-br-md rounded-bl-md cursor-pointer rotate-180"
           onClick={toggleSidebar}
         >
           <div className="w-[5%] h-[3px] bg-lightBlue rounded-md"></div>

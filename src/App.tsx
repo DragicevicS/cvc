@@ -30,14 +30,14 @@ const App: React.FC = () => {
       loop={true}
       className="w-full h-[100dvh] overflow-hidden"
     >
-      <SwiperSlide className="flex flex-col justify-evenly items-center h-[100dvh]">
+      <SwiperSlide className="flex flex-col justify-evenly items-center h-full">
         <h1 className="text-3xl font-serif">CV Creator</h1>
         <Home />
         <button type="button" onClick={goToNextSlide}>
           Select
         </button>
       </SwiperSlide>
-      <SwiperSlide className="flex flex-col justify-evenly items-center h-[100dvh]">
+      <SwiperSlide className="flex flex-col justify-evenly items-center h-full">
         <Creator goToPrevSlide={goToPrevSlide} />
       </SwiperSlide>
     </Swiper>
