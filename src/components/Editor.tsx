@@ -53,7 +53,7 @@ const Editor: React.FC<EditorProps> = ({
 
   return (
     <div
-      className={`fixed bottom-0 lg:left-0 flex flex-col items-center w-screen sm:w-[85vw] md:w-[80vw] lg:w-1/3 h-[96.5vh] lg:h-full bg-darkGray text-white ${
+      className={`fixed bottom-0 lg:left-0 flex flex-col items-center w-screen sm:w-[85vw] md:w-[80vw] lg:w-1/3 h-[96vh] lg:h-full bg-darkGray text-white ${
         !sidebarShow && isSmallScreen
           ? "translate-y-full"
           : !sidebarShow && !isSmallScreen && "-translate-x-full"
