@@ -105,7 +105,7 @@ const Template1: React.FC = () => {
         </div>
         <hr className="w-full" />
         <div className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)]">
-          <h2 className="text-[calc(98vw/33)] sm:text-[calc(95vh/50)]">
+          <h2 className="text-[calc(98vw/33)] sm:text-[calc(95vh/50)] mb-1">
             Work Experience
           </h2>
           <div>
@@ -113,9 +113,9 @@ const Template1: React.FC = () => {
               <div className="flex items-center">
                 <div className="w-full">
                   <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
-                    Warehouse Manager
+                    &bull; Job Position 1
                   </p>
-                  <p>Somboled d.o.o.</p>
+                  <p>Company Name 1</p>
                   <p>Sombor, Serbia</p>
                 </div>
                 <p className="w-44 text-right font-bold">08/2004 - 10/2024</p>
@@ -135,10 +135,10 @@ const Template1: React.FC = () => {
           <div>
             <div className="flex items-center">
               <div className="w-full">
-                <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)] underline">
-                  Warehouse Manager
+                <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
+                  &bull; Job Position 2
                 </p>
-                <p>Somboled d.o.o.</p>
+                <p>Company Name 2</p>
                 <p>Sombor, Serbia</p>
               </div>
               <p className="w-44 text-right font-bold">08/2004 - 10/2024</p>
@@ -157,10 +157,10 @@ const Template1: React.FC = () => {
           <div>
             <div className="flex items-center">
               <div className="w-full">
-                <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)] underline">
-                  Warehouse Manager
+                <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
+                  &bull; Job Position 3
                 </p>
-                <p>Somboled d.o.o.</p>
+                <p>Company Name 3</p>
                 <p>Sombor, Serbia</p>
               </div>
               <p className="w-44 text-right font-bold">08/2004 - 10/2024</p>
