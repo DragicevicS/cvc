@@ -12,22 +12,14 @@ import SkillList from "./forms/SkillList";
 type EditorProps = {
   goToPrevSlide: () => void;
   sidebarShow: boolean;
-  setSidebarShow: (arg0: boolean) => void;
+  toggleSidebar: () => void;
 };
 
 const Editor: React.FC<EditorProps> = ({
   goToPrevSlide,
   sidebarShow,
-  setSidebarShow,
+  toggleSidebar,
 }) => {
-  const toggleSidebar = () => {
-    if (!sidebarShow) {
-      setSidebarShow(true);
-      return;
-    }
-    setSidebarShow(false);
-  };
-
   const [expanded, setExpanded] = useState<string | false>(false);
 
   const handleAccordionChange =
@@ -53,7 +45,7 @@ const Editor: React.FC<EditorProps> = ({
 
   return (
     <div
-      className={`fixed bottom-0 lg:left-0 flex flex-col items-center w-screen sm:w-[85vw] md:w-[80vw] lg:w-1/3 h-[96%] lg:h-full bg-darkGray text-white ${
+      className={`fixed bottom-0 lg:left-0 flex flex-col items-center w-screen sm:w-[83vw] md:w-[80vw] lg:w-1/3 h-[96%] lg:h-full bg-darkGray text-white ${
         !sidebarShow && isSmallScreen
           ? "translate-y-full"
           : !sidebarShow && !isSmallScreen && "-translate-x-full"

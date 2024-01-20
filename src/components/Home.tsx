@@ -33,7 +33,7 @@ const Home: React.FC = () => {
             delay: 4500,
             pauseOnMouseEnter: true,
           }}
-          className="pb-9 first:w-1/5"
+          className="pb-9 first:w-[80vw] md:first:w-2/5 lg:first:w-1/4 xl:first:w-1/5"
         >
           {imageLoad.map((img, index) => {
             return (

@@ -31,7 +31,10 @@ const App: React.FC = () => {
       className="w-full h-[100dvh] overflow-hidden"
     >
       <SwiperSlide className="flex flex-col justify-evenly items-center h-full">
-        <h1 className="text-3xl font-serif">CV Creator</h1>
+        <div>
+          <h1 className="text-3xl font-serif">CV Creator</h1>
+          <h2 className="text-xl">(Work in progress!)</h2>
+        </div>
         <Home />
         <button type="button" onClick={goToNextSlide}>
           Select
