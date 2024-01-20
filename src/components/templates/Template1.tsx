@@ -7,7 +7,7 @@ const Template1: React.FC = () => {
     >
       <div className="flex flex-col gap-1 w-[38%] h-full py-[calc(95vw/80)] sm:py-[calc(95vh/90)] bg-lightGray text-white">
         <div
-          className={`min-w-[calc(98vw/3.9)] sm:min-w-[calc(95vh/5.5)] min-h-[calc(98vw/3.9)] sm:min-h-[calc(95vh/5.5)] mx-auto bg-cover bg-no-repeat border-2 sm:border-3 rounded-full`}
+          className={`min-w-[calc(98vw/3.8)] sm:min-w-[calc(95vh/5.35)] min-h-[calc(98vw/3.8)] sm:min-h-[calc(95vh/5.35)] mx-auto bg-cover bg-no-repeat border-2 sm:border-3 rounded-full`}
           style={{ backgroundImage: `url(${profilePic})` }}
         ></div>
         <div className="flex flex-col gap-1 pl-[calc(98vw/25)] sm:pl-[calc(95vh/30)]">

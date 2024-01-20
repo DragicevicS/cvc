@@ -52,7 +52,7 @@ const Editor: React.FC<EditorProps> = ({
       } transition duration-200 ease-out`}
     >
       <div
-        className={`flex justify-between w-full p-2 bg-black ${
+        className={`flex justify-between items-center w-full p-2 bg-black ${
           !sidebarShow && "hidden"
         }`}
       >
@@ -63,13 +63,24 @@ const Editor: React.FC<EditorProps> = ({
         >
           CVC
         </h1>
-        <button
-          type="button"
-          onClick={goToPrevSlide}
-          className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
-        >
-          Change template
-        </button>
+        <div>
+          <button
+            type="button"
+            onClick={goToPrevSlide}
+            className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
+          >
+            Change template
+          </button>
+          {isSmallScreen && (
+            <button
+              type="button"
+              onClick={toggleSidebar}
+              className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
+            >
+              Preview
+            </button>
+          )}
+        </div>
       </div>
       <div className="flex flex-col items-center gap-3 w-[96%] overflow-y-auto">
         <h2 className="text-xl mt-1">Editor</h2>

@@ -18,13 +18,13 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
     let touchEndY: number | null = null;
 
     const handleTouchStart = (e: TouchEvent) => {
-      if (e.target && (e.target as HTMLElement).closest(".MuiCollapse-wrapper"))
+      if (e.target && (e.target as HTMLElement).closest(".MuiAccordion-root"))
         return;
       touchStartY = e.changedTouches[0].screenY;
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (e.target && (e.target as HTMLElement).closest(".MuiCollapse-wrapper"))
+      if (e.target && (e.target as HTMLElement).closest(".MuiAccordion-root"))
         return;
       touchEndY = e.changedTouches[0].screenY;
     };
@@ -32,8 +32,8 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
     const handleTouchEnd = () => {
       if (touchStartY === null || touchEndY === null) return;
 
-      if (touchEndY - touchStartY > 100 && sidebarShow) toggleSidebar();
-      else if (touchStartY - touchEndY > 100 && !sidebarShow) toggleSidebar();
+      if (touchEndY - touchStartY > 80 && sidebarShow) toggleSidebar();
+      else if (touchStartY - touchEndY > 80 && !sidebarShow) toggleSidebar();
 
       touchStartY = null;
       touchEndY = null;

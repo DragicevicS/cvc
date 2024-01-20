@@ -14,7 +14,7 @@ const WorkExperienceForm: React.FC<WorkExperienceProps> = ({ index }) => {
         />
         <label
           htmlFor={`job-title-${index}`}
-          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300"
+          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           Job title
         </label>
@@ -28,7 +28,7 @@ const WorkExperienceForm: React.FC<WorkExperienceProps> = ({ index }) => {
         />
         <label
           htmlFor={`company-name-${index}`}
-          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300"
+          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           Company name
         </label>
@@ -42,7 +42,7 @@ const WorkExperienceForm: React.FC<WorkExperienceProps> = ({ index }) => {
         />
         <label
           htmlFor={`company-location-${index}`}
-          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300"
+          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           Company location
         </label>
@@ -56,7 +56,7 @@ const WorkExperienceForm: React.FC<WorkExperienceProps> = ({ index }) => {
         />
         <label
           htmlFor={`job-from-${index}`}
-          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300"
+          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           From
         </label>
@@ -70,7 +70,7 @@ const WorkExperienceForm: React.FC<WorkExperienceProps> = ({ index }) => {
         />
         <label
           htmlFor={`job-to-${index}`}
-          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300"
+          className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           To
         </label>

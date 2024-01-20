@@ -9,7 +9,7 @@ const Preview: React.FC<PreviewProps> = ({ sidebarShow }) => {
     <div
       className={`absolute flex justify-center items-center min-w-[65%] h-full bg-lightBlue ${
         !sidebarShow && "w-screen"
-      } duration-100 ease-out`}
+      } duration-100 ease-out cursor-default pointer-events-none`}
     >
       <Template1 />
     </div>
