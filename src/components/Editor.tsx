@@ -13,12 +13,18 @@ type EditorProps = {
   goToPrevSlide: () => void;
   sidebarShow: boolean;
   toggleSidebar: () => void;
+  skillArray: { id: number; skill: string }[];
+  setSkillArray: React.Dispatch<
+    React.SetStateAction<{ id: number; skill: string }[]>
+  >;
 };
 
 const Editor: React.FC<EditorProps> = ({
   goToPrevSlide,
   sidebarShow,
   toggleSidebar,
+  skillArray,
+  setSkillArray,
 }) => {
   const [expanded, setExpanded] = useState<string | false>(false);
 
@@ -51,11 +57,7 @@ const Editor: React.FC<EditorProps> = ({
           : !sidebarShow && !isSmallScreen && "-translate-x-full"
       } transition duration-200 ease-out`}
     >
-      <div
-        className={`flex justify-between items-center w-full p-2 bg-black ${
-          !sidebarShow && "hidden"
-        }`}
-      >
+      <div className="flex justify-between items-center w-full p-2 bg-black">
         <h1
           className="text-3xl font-serif cursor-pointer"
           title="CV Creator"
@@ -82,7 +84,7 @@ const Editor: React.FC<EditorProps> = ({
           )}
         </div>
       </div>
-      <div className="flex flex-col items-center gap-3 w-[96%] overflow-y-auto">
+      <div className="flex flex-col items-center gap-3 w-[96%] overflow-y-auto scrollbar-gutter">
         <h2 className="text-xl mt-1">Editor</h2>
         {forms.map((form, index) => {
           return (
@@ -122,7 +124,10 @@ const Editor: React.FC<EditorProps> = ({
                       </button>
                     </>
                   ) : index === 3 ? (
-                    <SkillList />
+                    <SkillList
+                      skillArray={skillArray}
+                      setSkillArray={setSkillArray}
+                    />
                   ) : (
                     ""
                   )}

@@ -1,29 +1,33 @@
-import { useState } from "react";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import deleteIcon from "../../assets/delete.svg";
 import deleteHoverIcon from "../../assets/delete-hover.svg";
 
+type SkillListProps = {
+  skillArray: { id: number; skill: string }[];
+  setSkillArray: React.Dispatch<
+    React.SetStateAction<{ id: number; skill: string }[]>
+  >;
+};
+
 let nextId = 1;
 
-const SkillList: React.FC = () => {
-  const [skills, setSkills] = useState<{ id: number; skill: string }[]>([
-    { id: 0, skill: "" },
-  ]);
-
+const SkillList: React.FC<SkillListProps> = ({ skillArray, setSkillArray }) => {
   const handleListAdd = () => {
-    setSkills((currentSkills) => [
+    setSkillArray((currentSkills) => [
       ...currentSkills,
       { id: nextId++, skill: "" },
     ]);
   };
 
   const handleListDelete = (index: number) => {
-    setSkills((currentSkills) => currentSkills.filter((_, i) => i !== index));
+    setSkillArray((currentSkills) =>
+      currentSkills.filter((_, i) => i !== index)
+    );
   };
 
   const handleListInput = (index: number, value: string) => {
-    setSkills((currentSkills) =>
+    setSkillArray((currentSkills) =>
       currentSkills.map((skill, i) =>
         i === index ? { ...skill, skill: value } : skill
       )
@@ -32,7 +36,7 @@ const SkillList: React.FC = () => {
 
   return (
     <List>
-      {skills.map((skill, index) => (
+      {skillArray.map((skill, index) => (
         <ListItem key={index}>
           <div className="w-2/3">
             <input
@@ -60,7 +64,7 @@ const SkillList: React.FC = () => {
           </div>
         </ListItem>
       ))}
-      {skills.length !== 10 && (
+      {skillArray.length !== 10 && (
         <ListItem>
           <button
             type="button"

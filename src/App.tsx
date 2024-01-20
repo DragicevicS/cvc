@@ -36,7 +36,7 @@ const App: React.FC = () => {
           <h2 className="text-xl">(Work in progress!)</h2>
         </div>
         <Home />
-        <button type="button" onClick={goToNextSlide}>
+        <button type="button" className="text-xl" onClick={goToNextSlide}>
           Select
         </button>
       </SwiperSlide>

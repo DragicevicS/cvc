@@ -1,6 +1,10 @@
 import profilePic from "../../assets/profile-pic.jpg";
 
-const Template1: React.FC = () => {
+type Template1Props = {
+  skillArray: { id: number; skill: string }[];
+};
+
+const Template1: React.FC<Template1Props> = ({ skillArray }) => {
   return (
     <div
       className={`flex w-[98vw] sm:w-[calc(95vh/1.414)] h-[calc(98vw*1.414)] sm:h-[95vh] bg-[#fff] text-[calc(98vw/46)] sm:text-[calc(95vh/75)] leading-tight overflow-hidden`}
@@ -180,37 +184,14 @@ const Template1: React.FC = () => {
           <h2 className="text-[calc(98vw/33)] sm:text-[calc(95vh/50)] mb-1">
             Skills
           </h2>
-          <ul className="grid grid-cols-2 text-[calc(98vw/50)] sm:text-[calc(95vh/75)]">
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              JavaScript / TypeScript
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              HTML5 & CSS3
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              React
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              Tailwind CSS
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              Vite / Webpack
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              Skill 6
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              Vite / Webpack
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              Skill 6
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              Vite / Webpack
-            </li>
-            <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
-              Skill 6
-            </li>
+          <ul className="grid grid-cols-2 text-[calc(98vw/50)] sm:text-[calc(95vh/70)]">
+            {skillArray.map((skill) => {
+              return (
+                <li className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)] list-disc col-span-1">
+                  {skill.skill}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

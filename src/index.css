@@ -27,6 +27,10 @@
     @apply bg-darkBlue;
   }
 
+  .scrollbar-gutter {
+    scrollbar-gutter: stable;
+  }
+
   /* Input autocomplete */
 
   :-webkit-autofill,

@@ -50,13 +50,19 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
     };
   }, [sidebarShow]);
 
+  const [skillArray, setSkillArray] = useState<{ id: number; skill: string }[]>(
+    [{ id: 0, skill: "" }]
+  );
+
   return (
     <main className="flex flex-col lg:flex-row-reverse items-center w-full h-full">
-      <Preview sidebarShow={sidebarShow} />
+      <Preview sidebarShow={sidebarShow} skillArray={skillArray} />
       <Editor
         goToPrevSlide={goToPrevSlide}
         sidebarShow={sidebarShow}
         toggleSidebar={toggleSidebar}
+        skillArray={skillArray}
+        setSkillArray={setSkillArray}
       />
     </main>
   );
