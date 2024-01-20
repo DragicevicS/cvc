@@ -29,8 +29,10 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
       touchEndY = e.changedTouches[0].screenY;
     };
 
-    const handleTouchEnd = () => {
+    const handleTouchEnd = (e: TouchEvent) => {
       if (touchStartY === null || touchEndY === null) return;
+
+      if (sidebarShow) e.preventDefault;
 
       if (touchEndY - touchStartY > 100 && sidebarShow) toggleSidebar();
       else if (touchStartY - touchEndY > 100 && !sidebarShow) toggleSidebar();
