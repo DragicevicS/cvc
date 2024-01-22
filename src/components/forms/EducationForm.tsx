@@ -18,12 +18,12 @@ const EducationForm: React.FC = () => {
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="text"
-          id="institution"
+          id="institutionName"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
         />
         <label
-          htmlFor="institution"
+          htmlFor="institutionName"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           Institution name
@@ -32,12 +32,12 @@ const EducationForm: React.FC = () => {
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="text"
-          id="institution-location"
+          id="institutionLocation"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
         />
         <label
-          htmlFor="institution-location"
+          htmlFor="institutionLocation"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           Insitution location
@@ -46,12 +46,12 @@ const EducationForm: React.FC = () => {
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="text"
-          id="education-from"
+          id="educationFrom"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
         />
         <label
-          htmlFor="education-from"
+          htmlFor="educationFrom"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           From
@@ -60,12 +60,12 @@ const EducationForm: React.FC = () => {
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="text"
-          id="education-to"
+          id="educationTo"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
         />
         <label
-          htmlFor="education-to"
+          htmlFor="educationTo"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           To
@@ -73,14 +73,14 @@ const EducationForm: React.FC = () => {
       </div>
       <div className="flex flex-col-reverse items-center relative mt-4">
         <textarea
-          id="education-description"
+          id="educationDescription"
           rows={3}
           maxLength={175}
           className="block resize-none pt-1 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
         />
         <label
-          htmlFor="education-description"
+          htmlFor="educationDescription"
           className="w-[90%] text-left peer-focus:text-white"
         >
           Education description

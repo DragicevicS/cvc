@@ -1,15 +1,54 @@
-const PersonalInfoForm: React.FC = () => {
+import { PersonalInfo } from "../templates/initialValuesAndTypes";
+
+type PersonalInfoFormProps = {
+  personalInfoValues: PersonalInfo;
+  setPersonalInfoValues: React.Dispatch<React.SetStateAction<PersonalInfo>>;
+};
+
+const PersonalInfoForm: React.FC<PersonalInfoFormProps> = ({
+  personalInfoValues,
+  setPersonalInfoValues,
+}) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { id, value } = e.target;
+    setPersonalInfoValues((prevValues) => ({
+      ...prevValues,
+      [id]: value,
+    }));
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onloadend = () => {
+        setPersonalInfoValues((prevValues) => ({
+          ...prevValues,
+          resumePhoto: reader.result,
+        }));
+      };
+
+      reader.readAsDataURL(file);
+    }
+  };
+
   return (
     <>
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="text"
-          id="first-last-name"
+          id="firstLastName"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.firstLastName}
+          onChange={handleInputChange}
         />
         <label
-          htmlFor="first-last-name"
+          htmlFor="firstLastName"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           First and last name
@@ -18,12 +57,14 @@ const PersonalInfoForm: React.FC = () => {
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="text"
-          id="occupational-title"
+          id="occupationalTitle"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.occupationalTitle}
+          onChange={handleInputChange}
         />
         <label
-          htmlFor="occupational-title"
+          htmlFor="occupationalTitle"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           Occupational title
@@ -32,12 +73,14 @@ const PersonalInfoForm: React.FC = () => {
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="text"
-          id="current-location"
+          id="currentLocation"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.currentLocation}
+          onChange={handleInputChange}
         />
         <label
-          htmlFor="current-location"
+          htmlFor="currentLocation"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           Current location or address
@@ -46,12 +89,14 @@ const PersonalInfoForm: React.FC = () => {
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="text"
-          id="phone-number"
+          id="phoneNumber"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.phoneNumber}
+          onChange={handleInputChange}
         />
         <label
-          htmlFor="phone-number"
+          htmlFor="phoneNumber"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
           Phone number
@@ -63,6 +108,8 @@ const PersonalInfoForm: React.FC = () => {
           id="email"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.email}
+          onChange={handleInputChange}
         />
         <label
           htmlFor="email"
@@ -77,12 +124,14 @@ const PersonalInfoForm: React.FC = () => {
           id="linkedin"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.linkedin}
+          onChange={handleInputChange}
         />
         <label
           htmlFor="linkedin"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
-          LinkedIn link
+          LinkedIn link (optional)
         </label>
       </div>
       <div className="flex flex-col items-center relative mt-4">
@@ -91,26 +140,30 @@ const PersonalInfoForm: React.FC = () => {
           id="github"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.github}
+          onChange={handleInputChange}
         />
         <label
           htmlFor="github"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
-          GitHub link
+          GitHub link (optional)
         </label>
       </div>
       <div className="flex flex-col items-center relative mt-4">
         <input
           type="url"
-          id="personal-website"
+          id="personalWebsite"
           className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.personalWebsite}
+          onChange={handleInputChange}
         />
         <label
-          htmlFor="personal-website"
+          htmlFor="personalWebsite"
           className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
         >
-          Personal website link
+          Personal website link (optional)
         </label>
       </div>
       <div className="flex flex-col-reverse items-center relative mt-4">
@@ -120,6 +173,8 @@ const PersonalInfoForm: React.FC = () => {
           maxLength={430}
           className="block resize-none pt-1 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
           placeholder=" "
+          value={personalInfoValues.about}
+          onChange={handleInputChange}
         />
         <label
           htmlFor="about"
@@ -130,13 +185,15 @@ const PersonalInfoForm: React.FC = () => {
       </div>
       <div className="flex flex-col items-center relative mt-4">
         <p className="w-[90%] text-left text-lightBlue cursor-default">
-          Choose a resume picture:
+          Choose a resume photo:
         </p>
         <input
           type="file"
-          id="resume-picture"
+          id="resumePhoto"
+          accept="image/png, image/jpeg"
           className="block pt-2.5 pb-1.5 w-[90%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white peer"
           placeholder=" "
+          onChange={handleFileChange}
         />
       </div>
     </>

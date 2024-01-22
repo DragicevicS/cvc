@@ -1,13 +1,12 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
+import { Skills } from "../templates/initialValuesAndTypes";
 import deleteIcon from "../../assets/delete.svg";
 import deleteHoverIcon from "../../assets/delete-hover.svg";
 
 type SkillListProps = {
-  skillArray: { id: number; skill: string }[];
-  setSkillArray: React.Dispatch<
-    React.SetStateAction<{ id: number; skill: string }[]>
-  >;
+  skillArray: Skills;
+  setSkillArray: React.Dispatch<React.SetStateAction<Skills>>;
 };
 
 let nextId = 1;

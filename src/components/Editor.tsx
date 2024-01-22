@@ -8,21 +8,24 @@ import PersonalInfoForm from "./forms/PersonalInfoForm";
 import WorkExperienceForm from "./forms/WorkExperienceForm";
 import EducationForm from "./forms/EducationForm";
 import SkillList from "./forms/SkillList";
+import { PersonalInfo, Skills } from "./templates/initialValuesAndTypes";
 
 type EditorProps = {
   goToPrevSlide: () => void;
   sidebarShow: boolean;
   toggleSidebar: () => void;
-  skillArray: { id: number; skill: string }[];
-  setSkillArray: React.Dispatch<
-    React.SetStateAction<{ id: number; skill: string }[]>
-  >;
+  personalInfoValues: PersonalInfo;
+  setPersonalInfoValues: React.Dispatch<React.SetStateAction<PersonalInfo>>;
+  skillArray: Skills;
+  setSkillArray: React.Dispatch<React.SetStateAction<Skills>>;
 };
 
 const Editor: React.FC<EditorProps> = ({
   goToPrevSlide,
   sidebarShow,
   toggleSidebar,
+  personalInfoValues,
+  setPersonalInfoValues,
   skillArray,
   setSkillArray,
 }) => {
@@ -102,7 +105,10 @@ const Editor: React.FC<EditorProps> = ({
               <AccordionDetails>
                 <form className="text-lightBlue text-sm">
                   {index === 0 ? (
-                    <PersonalInfoForm />
+                    <PersonalInfoForm
+                      personalInfoValues={personalInfoValues}
+                      setPersonalInfoValues={setPersonalInfoValues}
+                    />
                   ) : index === 1 ? (
                     <>
                       <WorkExperienceForm index={1} />

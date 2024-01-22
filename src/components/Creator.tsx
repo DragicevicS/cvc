@@ -1,6 +1,11 @@
 import { useState, useEffect } from "react";
 import Editor from "./Editor";
 import Preview from "./Preview";
+import {
+  PersonalInfo,
+  initialPersonalInfo,
+  Skills,
+} from "./templates/initialValuesAndTypes";
 
 type CreatorProps = {
   goToPrevSlide: () => void;
@@ -50,17 +55,24 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
     };
   }, [sidebarShow]);
 
-  const [skillArray, setSkillArray] = useState<{ id: number; skill: string }[]>(
-    [{ id: 0, skill: "" }]
-  );
+  const [personalInfoValues, setPersonalInfoValues] =
+    useState<PersonalInfo>(initialPersonalInfo);
+
+  const [skillArray, setSkillArray] = useState<Skills>([{ id: 0, skill: "" }]);
 
   return (
     <main className="flex flex-col lg:flex-row-reverse items-center w-full h-full">
-      <Preview sidebarShow={sidebarShow} skillArray={skillArray} />
+      <Preview
+        sidebarShow={sidebarShow}
+        personalInfoValues={personalInfoValues}
+        skillArray={skillArray}
+      />
       <Editor
         goToPrevSlide={goToPrevSlide}
         sidebarShow={sidebarShow}
         toggleSidebar={toggleSidebar}
+        personalInfoValues={personalInfoValues}
+        setPersonalInfoValues={setPersonalInfoValues}
         skillArray={skillArray}
         setSkillArray={setSkillArray}
       />
