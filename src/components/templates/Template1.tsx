@@ -1,12 +1,21 @@
-import { PersonalInfo, Skills } from "./initialValuesAndTypes";
+import {
+  PersonalInfo,
+  WorkExperience,
+  Education,
+  Skills,
+} from "./initialValuesAndTypes";
 
 type Template1Props = {
   personalInfoValues: PersonalInfo;
+  workExperienceValuesArray: WorkExperience;
+  educationValuesArray: Education;
   skillArray: Skills;
 };
 
 const Template1: React.FC<Template1Props> = ({
   personalInfoValues,
+  workExperienceValuesArray,
+  educationValuesArray,
   skillArray,
 }) => {
   return (
@@ -16,14 +25,14 @@ const Template1: React.FC<Template1Props> = ({
       <div className="flex flex-col gap-1 w-[38%] h-full py-[calc(95vw/80)] sm:py-[calc(95vh/90)] bg-lightGray text-white">
         {personalInfoValues.resumePhoto !== null ? (
           <div
-            className={`min-w-[calc(98vw/3.8)] sm:min-w-[calc(95vh/5.35)] min-h-[calc(98vw/3.8)] sm:min-h-[calc(95vh/5.35)] mx-auto bg-cover bg-no-repeat border-2 sm:border-3 rounded-full`}
+            className={`min-w-[calc(98vw/3.8)] sm:min-w-[calc(95vh/5.35)] min-h-[calc(98vw/3.8)] sm:min-h-[calc(95vh/5.35)] mx-auto mb-1 bg-cover bg-no-repeat border-2 sm:border-3 rounded-full`}
             style={{
               backgroundImage: `url(${personalInfoValues.resumePhoto})`,
             }}
           ></div>
         ) : (
           <div
-            className={`flex justify-center items-center min-w-[calc(98vw/3.8)] sm:min-w-[calc(95vh/5.35)] min-h-[calc(98vw/3.8)] sm:min-h-[calc(95vh/5.35)] mx-auto text-[calc(98vw/33.5)] sm:text-[calc(95vh/43)] border-2 sm:border-3 rounded-full`}
+            className={`flex justify-center items-center min-w-[calc(98vw/3.8)] sm:min-w-[calc(95vh/5.35)] min-h-[calc(98vw/3.8)] sm:min-h-[calc(95vh/5.35)] mx-auto mb-1 text-[calc(98vw/33.5)] sm:text-[calc(95vh/43)] border-2 sm:border-3 rounded-full`}
           >
             [ my photo ]
           </div>
@@ -94,41 +103,44 @@ const Template1: React.FC<Template1Props> = ({
             <h2 className="text-[calc(98vw/33.5)] sm:text-[calc(95vh/43)]">
               Education
             </h2>
-            <div>
-              <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
-                Degree
-              </p>
-              <p>Institution</p>
-              <p className="font-bold">2010 - 2014</p>
-              <p className="text-justify text-[calc(98vw/50)] sm:text-[calc(95vh/75)]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                pharetra in lorem at laoreet. Donec hendrerit libero eget est
-                tempor, quis tempus arcu elementum. In el
-              </p>
-            </div>
-            <div>
-              <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
-                Degree
-              </p>
-              <p>Institution</p>
-              <p className="font-bold">2010 - 2014</p>
-              <p className="text-justify text-[calc(98vw/50)] sm:text-[calc(95vh/75)]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                pharetra in lorem at laoreet. Donec hendrerit libero eget est
-                tempor, quis tempus arcu elementum. In el
-              </p>
-            </div>
+            {educationValuesArray.map((education) => (
+              <div key={education.index}>
+                <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
+                  {education.degree === ""
+                    ? `Degree ${education.index + 1}`
+                    : education.degree}
+                </p>
+                <p>
+                  {education.institutionName === ""
+                    ? `Institution ${education.index + 1}`
+                    : education.institutionName}
+                </p>
+                <p>
+                  {education.institutionLocation === ""
+                    ? `City ${education.index + 1}, Country`
+                    : education.institutionLocation}
+                </p>
+                <p className="font-bold">
+                  {education.educationFrom} - {education.educationTo}
+                </p>
+                <p className="text-justify text-[calc(98vw/50)] sm:text-[calc(95vh/75)]">
+                  {education.educationDescription === ""
+                    ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum."
+                    : education.educationDescription}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
       <div className="flex flex-col gap-[2px] sm:gap-2 w-[62%] h-full pr-[calc(98vw/25)] sm:pr-[calc(95vh/30)] py-[calc(95vw/80)] sm:py-[calc(95vh/90)]">
         <div className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)]">
-          <h1 className="text-[calc(98vw/20)] sm:text-[calc(95vh/26)]">
+          <h1 className="text-[calc(98vw/22)] sm:text-[calc(95vh/29)]">
             {personalInfoValues.firstLastName === ""
               ? "John Doe"
               : personalInfoValues.firstLastName}
           </h1>
-          <h2 className="text-[calc(98vw/28)] sm:text-[calc(95vh/40)]">
+          <h2 className="text-[calc(98vw/28)] sm:text-[calc(95vh/40)] font-semibold opacity-80">
             {personalInfoValues.occupationalTitle === ""
               ? "Occupational Title"
               : personalInfoValues.occupationalTitle}
@@ -144,72 +156,37 @@ const Template1: React.FC<Template1Props> = ({
           <h2 className="text-[calc(98vw/33)] sm:text-[calc(95vh/50)] mb-1">
             Work Experience
           </h2>
-          <div>
-            <div>
+          {workExperienceValuesArray.map((workExp) => (
+            <div key={workExp.index}>
               <div className="flex items-center">
                 <div className="w-full">
                   <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
-                    &bull; Job Position 1
+                    {workExp.jobTitle === ""
+                      ? `Job Position ${workExp.index + 1}`
+                      : workExp.jobTitle}
                   </p>
-                  <p>Company Name 1</p>
-                  <p>Sombor, Serbia</p>
+                  <p>
+                    {workExp.companyName === ""
+                      ? `Company Name ${workExp.index + 1}`
+                      : workExp.companyName}
+                  </p>
+                  <p>
+                    {workExp.companyLocation === ""
+                      ? `City ${workExp.index + 1}, Country`
+                      : workExp.companyLocation}
+                  </p>
                 </div>
-                <p className="w-44 text-right font-bold">08/2004 - 10/2024</p>
+                <p className="w-44 text-right font-bold">
+                  {workExp.jobFrom} - {workExp.jobTo}
+                </p>
               </div>
               <p className="mt-1 text-justify text-[calc(98vw/50)] sm:text-[calc(95vh/75)]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-                pharetra in lorem at laoreet. Donec hendrerit libero eget est
-                tempor, quis tempus arcu elementum. In elementum elit at dui
-                tristique feugiat. Mauris convallis, mi at mattis malesuada,
-                neque nulla volutpat dolor, hendrerit faucibus eros nibh ut
-                nunc. Proin luctus urna id nunc sagittisLorem i
+                {workExp.jobDescription === ""
+                  ? "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra in lorem at laoreet. Donec hendrerit libero eget est tempor, quis tempus arcu elementum. In elementum elit at dui tristique feugiat. Mauris convallis, mi at mattis malesuada, neque nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc."
+                  : workExp.jobDescription}
               </p>
             </div>
-          </div>
-        </div>
-        <div className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)]">
-          <div>
-            <div className="flex items-center">
-              <div className="w-full">
-                <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
-                  &bull; Job Position 2
-                </p>
-                <p>Company Name 2</p>
-                <p>Sombor, Serbia</p>
-              </div>
-              <p className="w-44 text-right font-bold">08/2004 - 10/2024</p>
-            </div>
-            <p className="mt-1 text-justify text-[calc(98vw/50)] sm:text-[calc(95vh/75)]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              pharetra in lorem at laoreet. Donec hendrerit libero eget est
-              tempor, quis tempus arcu elementum. In elementum elit at dui
-              tristique feugiat. Mauris convallis, mi at mattis malesuada, neque
-              nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc. Proin
-              luctus urna id nunc sagittisLorem i
-            </p>
-          </div>
-        </div>
-        <div className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)]">
-          <div>
-            <div className="flex items-center">
-              <div className="w-full">
-                <p className="text-[calc(98vw/39.5)] sm:text-[calc(95vh/58)]">
-                  &bull; Job Position 3
-                </p>
-                <p>Company Name 3</p>
-                <p>Sombor, Serbia</p>
-              </div>
-              <p className="w-44 text-right font-bold">08/2004 - 10/2024</p>
-            </div>
-            <p className="mt-1 text-justify text-[calc(98vw/50)] sm:text-[calc(95vh/75)]">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              pharetra in lorem at laoreet. Donec hendrerit libero eget est
-              tempor, quis tempus arcu elementum. In elementum elit at dui
-              tristique feugiat. Mauris convallis, mi at mattis malesuada, neque
-              nulla volutpat dolor, hendrerit faucibus eros nibh ut nunc. Proin
-              luctus urna id nunc sagittisLorem i
-            </p>
-          </div>
+          ))}
         </div>
         <hr className="w-full" />
         <div className="ml-[calc(98vw/25)] sm:ml-[calc(95vh/30)]">

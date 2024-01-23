@@ -8,7 +8,12 @@ import PersonalInfoForm from "./forms/PersonalInfoForm";
 import WorkExperienceForm from "./forms/WorkExperienceForm";
 import EducationForm from "./forms/EducationForm";
 import SkillList from "./forms/SkillList";
-import { PersonalInfo, Skills } from "./templates/initialValuesAndTypes";
+import {
+  PersonalInfo,
+  WorkExperience,
+  Education,
+  Skills,
+} from "./templates/initialValuesAndTypes";
 
 type EditorProps = {
   goToPrevSlide: () => void;
@@ -16,6 +21,12 @@ type EditorProps = {
   toggleSidebar: () => void;
   personalInfoValues: PersonalInfo;
   setPersonalInfoValues: React.Dispatch<React.SetStateAction<PersonalInfo>>;
+  workExperienceValuesArray: WorkExperience;
+  setWorkExperienceValuesArray: React.Dispatch<
+    React.SetStateAction<WorkExperience>
+  >;
+  educationValuesArray: Education;
+  setEducationValuesArray: React.Dispatch<React.SetStateAction<Education>>;
   skillArray: Skills;
   setSkillArray: React.Dispatch<React.SetStateAction<Skills>>;
 };
@@ -26,6 +37,10 @@ const Editor: React.FC<EditorProps> = ({
   toggleSidebar,
   personalInfoValues,
   setPersonalInfoValues,
+  workExperienceValuesArray,
+  setWorkExperienceValuesArray,
+  educationValuesArray,
+  setEducationValuesArray,
   skillArray,
   setSkillArray,
 }) => {
@@ -51,6 +66,36 @@ const Editor: React.FC<EditorProps> = ({
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const handleAddWorkExperienceForm = () => {
+    setWorkExperienceValuesArray((prevValues) => [
+      ...prevValues,
+      {
+        index: prevValues.length,
+        jobTitle: "",
+        companyName: "",
+        companyLocation: "",
+        jobFrom: "",
+        jobTo: "",
+        jobDescription: "",
+      },
+    ]);
+  };
+
+  const handleAddEducationForm = () => {
+    setEducationValuesArray((prevValues) => [
+      ...prevValues,
+      {
+        index: prevValues.length,
+        degree: "",
+        institutionName: "",
+        institutionLocation: "",
+        educationFrom: "",
+        educationTo: "",
+        educationDescription: "",
+      },
+    ]);
+  };
 
   return (
     <div
@@ -103,7 +148,7 @@ const Editor: React.FC<EditorProps> = ({
                 <Typography>{form}</Typography>
               </AccordionSummary>
               <AccordionDetails>
-                <form className="text-lightBlue text-sm">
+                <form className="flex flex-col text-lightBlue text-sm">
                   {index === 0 ? (
                     <PersonalInfoForm
                       personalInfoValues={personalInfoValues}
@@ -111,23 +156,37 @@ const Editor: React.FC<EditorProps> = ({
                     />
                   ) : index === 1 ? (
                     <>
-                      <WorkExperienceForm index={1} />
-                      <button
-                        type="button"
-                        className="mt-3 px-3 py-1 hover:bg-lightGray transition-all duration-500 ease"
-                      >
-                        Add
-                      </button>
+                      <WorkExperienceForm
+                        workExperienceValuesArray={workExperienceValuesArray}
+                        setWorkExperienceValuesArray={
+                          setWorkExperienceValuesArray
+                        }
+                      />
+                      {workExperienceValuesArray.length < 3 && (
+                        <button
+                          type="button"
+                          className="mt-2 ml-auto mr-3 px-3 py-1 text-lg hover:bg-lightGray transition-all duration-500 ease"
+                          onClick={handleAddWorkExperienceForm}
+                        >
+                          Add
+                        </button>
+                      )}
                     </>
                   ) : index === 2 ? (
                     <>
-                      <EducationForm />
-                      <button
-                        type="button"
-                        className="mt-3 px-3 py-1 hover:bg-lightGray transition-all duration-500 ease"
-                      >
-                        Add
-                      </button>
+                      <EducationForm
+                        educationValuesArray={educationValuesArray}
+                        setEducationValuesArray={setEducationValuesArray}
+                      />
+                      {educationValuesArray.length < 2 && (
+                        <button
+                          type="button"
+                          className="mt-2 ml-auto mr-3 px-3 py-1 text-lg hover:bg-lightGray transition-all duration-500 ease"
+                          onClick={handleAddEducationForm}
+                        >
+                          Add
+                        </button>
+                      )}
                     </>
                   ) : index === 3 ? (
                     <SkillList

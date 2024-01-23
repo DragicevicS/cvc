@@ -4,6 +4,10 @@ import Preview from "./Preview";
 import {
   PersonalInfo,
   initialPersonalInfo,
+  WorkExperience,
+  initialWorkExperienceValues,
+  Education,
+  initialEducationValues,
   Skills,
 } from "./templates/initialValuesAndTypes";
 
@@ -58,6 +62,13 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
   const [personalInfoValues, setPersonalInfoValues] =
     useState<PersonalInfo>(initialPersonalInfo);
 
+  const [workExperienceValuesArray, setWorkExperienceValuesArray] =
+    useState<WorkExperience>(initialWorkExperienceValues);
+
+  const [educationValuesArray, setEducationValuesArray] = useState<Education>(
+    initialEducationValues
+  );
+
   const [skillArray, setSkillArray] = useState<Skills>([{ id: 0, skill: "" }]);
 
   return (
@@ -65,6 +76,8 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
       <Preview
         sidebarShow={sidebarShow}
         personalInfoValues={personalInfoValues}
+        workExperienceValuesArray={workExperienceValuesArray}
+        educationValuesArray={educationValuesArray}
         skillArray={skillArray}
       />
       <Editor
@@ -73,6 +86,10 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
         toggleSidebar={toggleSidebar}
         personalInfoValues={personalInfoValues}
         setPersonalInfoValues={setPersonalInfoValues}
+        workExperienceValuesArray={workExperienceValuesArray}
+        setWorkExperienceValuesArray={setWorkExperienceValuesArray}
+        educationValuesArray={educationValuesArray}
+        setEducationValuesArray={setEducationValuesArray}
         skillArray={skillArray}
         setSkillArray={setSkillArray}
       />

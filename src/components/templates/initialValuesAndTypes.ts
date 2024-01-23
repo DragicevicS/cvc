@@ -26,7 +26,7 @@ export type PersonalInfo = {
 
 export const initialWorkExperienceValues = [
   {
-    id: 0,
+    index: 0,
     jobTitle: "",
     companyName: "",
     companyLocation: "",
@@ -37,7 +37,7 @@ export const initialWorkExperienceValues = [
 ];
 
 export type WorkExperience = {
-  id: number;
+  index: number;
   jobTitle: string;
   companyName: string;
   companyLocation: string;
@@ -48,7 +48,7 @@ export type WorkExperience = {
 
 export const initialEducationValues = [
   {
-    id: 0,
+    index: 0,
     degree: "",
     institutionName: "",
     institutionLocation: "",
@@ -59,7 +59,7 @@ export const initialEducationValues = [
 ];
 
 export type Education = {
-  id: number;
+  index: number;
   degree: string;
   institutionName: string;
   institutionLocation: string;

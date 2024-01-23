@@ -1,14 +1,23 @@
 import Template1 from "./templates/Template1";
-import { PersonalInfo, Skills } from "./templates/initialValuesAndTypes";
+import {
+  PersonalInfo,
+  WorkExperience,
+  Education,
+  Skills,
+} from "./templates/initialValuesAndTypes";
 
 type PreviewProps = {
   personalInfoValues: PersonalInfo;
+  workExperienceValuesArray: WorkExperience;
+  educationValuesArray: Education;
   sidebarShow: boolean;
   skillArray: Skills;
 };
 
 const Preview: React.FC<PreviewProps> = ({
   personalInfoValues,
+  workExperienceValuesArray,
+  educationValuesArray,
   sidebarShow,
   skillArray,
 }) => {
@@ -20,6 +29,8 @@ const Preview: React.FC<PreviewProps> = ({
     >
       <Template1
         personalInfoValues={personalInfoValues}
+        workExperienceValuesArray={workExperienceValuesArray}
+        educationValuesArray={educationValuesArray}
         skillArray={skillArray}
       />
     </div>
