@@ -72,7 +72,7 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
   const [skillArray, setSkillArray] = useState<Skills>([{ id: 0, skill: "" }]);
 
   return (
-    <main className="flex flex-col lg:flex-row-reverse items-center w-full h-full">
+    <main className="flex flex-col lg:flex-row-reverse justify-center items-center py-10 w-full h-full">
       <Preview
         sidebarShow={sidebarShow}
         personalInfoValues={personalInfoValues}

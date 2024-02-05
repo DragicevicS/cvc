@@ -123,7 +123,7 @@ const EducationForm: React.FC<EducationProps> = ({
             <textarea
               id={`educationDescription${education.index}`}
               rows={3}
-              maxLength={175}
+              maxLength={200}
               className="block resize-none pt-1 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
               placeholder=" "
               value={education.educationDescription}

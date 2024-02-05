@@ -63,7 +63,7 @@ const SkillList: React.FC<SkillListProps> = ({ skillArray, setSkillArray }) => {
           </div>
         </ListItem>
       ))}
-      {skillArray.length !== 10 && (
+      {skillArray.length !== 12 && (
         <ListItem>
           <button
             type="button"

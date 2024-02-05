@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import * as html2pdf from "html2pdf.js";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -14,6 +15,7 @@ import {
   Education,
   Skills,
 } from "./templates/initialValuesAndTypes";
+import arrowLeftSVG from "../assets/arrow-left.svg";
 
 type EditorProps = {
   goToPrevSlide: () => void;
@@ -97,6 +99,16 @@ const Editor: React.FC<EditorProps> = ({
     ]);
   };
 
+  const generatePDF = () => {
+    const element = document.getElementById("pdf-content");
+    const opt = {
+      filename: "myCV.pdf",
+      html2canvas: { letterRendering: true },
+      jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+    };
+    html2pdf().from(element).set(opt).save();
+  };
+
   return (
     <div
       className={`fixed bottom-0 lg:left-0 flex flex-col items-center w-screen sm:w-[83vw] md:w-[80vw] lg:w-1/3 h-[96%] lg:h-full bg-darkGray text-white ${
@@ -107,29 +119,37 @@ const Editor: React.FC<EditorProps> = ({
     >
       <div className="flex justify-between items-center w-full p-2 bg-black">
         <h1
-          className="text-3xl font-serif cursor-pointer"
+          className="flex items-center gap-1 text-3xl font-serif cursor-pointer"
           title="CV Creator"
           onClick={goToPrevSlide}
         >
+          <img src={arrowLeftSVG} alt="Home" />
           CVC
         </h1>
         <div>
           <button
             type="button"
-            onClick={goToPrevSlide}
             className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
+            onClick={goToPrevSlide}
           >
             Change template
           </button>
           {isSmallScreen && (
             <button
               type="button"
-              onClick={toggleSidebar}
               className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
+              onClick={toggleSidebar}
             >
               Preview
             </button>
           )}
+          <button
+            type="button"
+            className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
+            onClick={generatePDF}
+          >
+            Save as PDF
+          </button>
         </div>
       </div>
       <div className="flex flex-col items-center gap-3 w-[96%] overflow-y-auto scrollbar-gutter">
@@ -162,7 +182,7 @@ const Editor: React.FC<EditorProps> = ({
                           setWorkExperienceValuesArray
                         }
                       />
-                      {workExperienceValuesArray.length < 3 && (
+                      {workExperienceValuesArray.length < 4 && (
                         <button
                           type="button"
                           className="mt-2 ml-auto mr-3 px-3 py-1 text-lg hover:bg-lightGray transition-all duration-500 ease"
@@ -178,7 +198,7 @@ const Editor: React.FC<EditorProps> = ({
                         educationValuesArray={educationValuesArray}
                         setEducationValuesArray={setEducationValuesArray}
                       />
-                      {educationValuesArray.length < 2 && (
+                      {educationValuesArray.length < 3 && (
                         <button
                           type="button"
                           className="mt-2 ml-auto mr-3 px-3 py-1 text-lg hover:bg-lightGray transition-all duration-500 ease"
