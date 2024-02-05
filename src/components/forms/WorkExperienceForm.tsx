@@ -125,7 +125,7 @@ const WorkExperienceForm: React.FC<WorkExperienceProps> = ({
             <textarea
               id={`jobDescription${workExp.index}`}
               rows={6}
-              maxLength={355}
+              maxLength={400}
               className="block resize-none pt-1 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
               placeholder=" "
               value={workExp.jobDescription}

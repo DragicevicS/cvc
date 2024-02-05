@@ -11,27 +11,29 @@ import zoomOutSVG from "../assets/zoom-out.svg";
 import crossSVG from "../assets/cross.svg";
 
 type PreviewProps = {
+  isSmallScreen: boolean;
+  sidebarShow: boolean;
   personalInfoValues: PersonalInfo;
   workExperienceValuesArray: WorkExperience;
   educationValuesArray: Education;
-  sidebarShow: boolean;
   skillArray: Skills;
 };
 
 const Preview: React.FC<PreviewProps> = ({
+  isSmallScreen,
+  sidebarShow,
   personalInfoValues,
   workExperienceValuesArray,
   educationValuesArray,
-  sidebarShow,
   skillArray,
 }) => {
   return (
     <TransformWrapper
-      wheel={{ step: 0.4 }}
       centerOnInit={true}
-      initialScale={0.6}
-      minScale={0.6}
-      maxScale={2}
+      initialScale={isSmallScreen ? 0.3 : 0.6}
+      minScale={isSmallScreen ? 0.3 : 0.5}
+      maxScale={isSmallScreen ? 1 : 1.5}
+      wheel={{ step: 0.4 }}
     >
       {({ zoomIn, zoomOut, resetTransform }) => (
         <>
@@ -61,11 +63,17 @@ const Preview: React.FC<PreviewProps> = ({
               />
             </button>
           </div>
-          <TransformComponent>
-            <div
-              className={`flex justify-center items-center w-screen h-full bg-lightBlue ${
-                sidebarShow && "lg:translate-x-[10%]"
-              } duration-100 ease-out cursor-grab active:cursor-grabbing`}
+          <div
+            className={`flex justify-center items-center bg-lightBlue ${
+              sidebarShow && "lg:translate-x-[10%]"
+            } duration-100 ease-out cursor-grab active:cursor-grabbing`}
+          >
+            <TransformComponent
+              wrapperStyle={{
+                width: "100vw",
+                height: "100vh",
+                padding: "12px 0",
+              }}
             >
               <Template1
                 personalInfoValues={personalInfoValues}
@@ -73,8 +81,8 @@ const Preview: React.FC<PreviewProps> = ({
                 educationValuesArray={educationValuesArray}
                 skillArray={skillArray}
               />
-            </div>
-          </TransformComponent>
+            </TransformComponent>
+          </div>
         </>
       )}
     </TransformWrapper>

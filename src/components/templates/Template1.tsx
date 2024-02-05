@@ -23,7 +23,7 @@ const Template1: React.FC<Template1Props> = ({
       id="pdf-content"
       className={`flex w-[210mm] h-[296.85mm] bg-[#fff] text-xs leading-tight overflow-hidden`}
     >
-      <div className="flex flex-col gap-3 w-[38%] h-full py-3.5 bg-lightGray text-white">
+      <div className="flex flex-col gap-3 w-[38%] h-full py-7 bg-lightGray text-white">
         {personalInfoValues.resumePhoto !== null ? (
           <div
             className={`min-w-[185px] min-h-[185px] mx-auto bg-cover bg-no-repeat border-[3px] rounded-full`}
@@ -118,7 +118,7 @@ const Template1: React.FC<Template1Props> = ({
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-2 w-[62%] h-full pr-8 py-3.5">
+      <div className="flex flex-col gap-2 w-[62%] h-full pr-8 py-7">
         <div className="ml-6">
           <h1 className="text-3xl">
             {personalInfoValues.firstLastName === ""

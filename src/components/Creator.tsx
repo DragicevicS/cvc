@@ -16,6 +16,20 @@ type CreatorProps = {
 };
 
 const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 1024);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const [sidebarShow, setSidebarShow] = useState(true);
 
   const toggleSidebar = () => {
@@ -72,8 +86,9 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
   const [skillArray, setSkillArray] = useState<Skills>([{ id: 0, skill: "" }]);
 
   return (
-    <main className="flex flex-col lg:flex-row-reverse justify-center items-center py-10 w-full h-full">
+    <main className="flex flex-col lg:flex-row-reverse justify-center items-center w-full h-full">
       <Preview
+        isSmallScreen={isSmallScreen}
         sidebarShow={sidebarShow}
         personalInfoValues={personalInfoValues}
         workExperienceValuesArray={workExperienceValuesArray}
@@ -82,6 +97,7 @@ const Creator: React.FC<CreatorProps> = ({ goToPrevSlide }) => {
       />
       <Editor
         goToPrevSlide={goToPrevSlide}
+        isSmallScreen={isSmallScreen}
         sidebarShow={sidebarShow}
         toggleSidebar={toggleSidebar}
         personalInfoValues={personalInfoValues}

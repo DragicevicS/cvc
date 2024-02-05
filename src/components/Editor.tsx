@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import * as html2pdf from "html2pdf.js";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
@@ -19,6 +19,7 @@ import arrowLeftSVG from "../assets/arrow-left.svg";
 
 type EditorProps = {
   goToPrevSlide: () => void;
+  isSmallScreen: boolean;
   sidebarShow: boolean;
   toggleSidebar: () => void;
   personalInfoValues: PersonalInfo;
@@ -35,6 +36,7 @@ type EditorProps = {
 
 const Editor: React.FC<EditorProps> = ({
   goToPrevSlide,
+  isSmallScreen,
   sidebarShow,
   toggleSidebar,
   personalInfoValues,
@@ -54,20 +56,6 @@ const Editor: React.FC<EditorProps> = ({
     };
 
   const forms = ["Personal Info", "Work Experience", "Education", "Skills"];
-
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsSmallScreen(window.innerWidth < 1024);
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const handleAddWorkExperienceForm = () => {
     setWorkExperienceValuesArray((prevValues) => [
@@ -117,27 +105,20 @@ const Editor: React.FC<EditorProps> = ({
           : !sidebarShow && !isSmallScreen && "-translate-x-full"
       } transition duration-200 ease-out`}
     >
-      <div className="flex justify-between items-center w-full p-2 bg-black">
-        <h1
+      <div className="flex justify-between items-center gap-2 w-full p-2 bg-black">
+        <div
           className="flex items-center gap-1 text-3xl font-serif cursor-pointer"
           title="CV Creator"
           onClick={goToPrevSlide}
         >
           <img src={arrowLeftSVG} alt="Home" />
-          CVC
-        </h1>
-        <div>
-          <button
-            type="button"
-            className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
-            onClick={goToPrevSlide}
-          >
-            Change template
-          </button>
+          <h1>CVC</h1>
+        </div>
+        <div className="flex flex-wrap justify-end">
           {isSmallScreen && (
             <button
               type="button"
-              className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
+              className="px-2 lg:px-3 lg:py-1 hover:bg-darkGray transition-all duration-500 ease"
               onClick={toggleSidebar}
             >
               Preview
@@ -145,7 +126,14 @@ const Editor: React.FC<EditorProps> = ({
           )}
           <button
             type="button"
-            className="px-3 py-1 hover:bg-darkGray transition-all duration-500 ease"
+            className="px-2 lg:px-3 lg:py-1 hover:bg-darkGray transition-all duration-500 ease"
+            onClick={goToPrevSlide}
+          >
+            Change template
+          </button>
+          <button
+            type="button"
+            className="px-2 lg:px-3 lg:py-1 hover:bg-darkGray transition-all duration-500 ease"
             onClick={generatePDF}
           >
             Save as PDF
@@ -198,7 +186,7 @@ const Editor: React.FC<EditorProps> = ({
                         educationValuesArray={educationValuesArray}
                         setEducationValuesArray={setEducationValuesArray}
                       />
-                      {educationValuesArray.length < 3 && (
+                      {educationValuesArray.length < 4 && (
                         <button
                           type="button"
                           className="mt-2 ml-auto mr-3 px-3 py-1 text-lg hover:bg-lightGray transition-all duration-500 ease"
