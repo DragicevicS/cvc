@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide, SwiperRef } from "swiper/react";
 import { EffectCube } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-cube";
-import Home from "./components/Home";
-import Creator from "./components/Creator";
+import Home from "./pages/Home";
+import Creator from "./pages/Creator";
 
 const App: React.FC = () => {
   const swiperRef = useRef<SwiperRef>(null);
@@ -31,10 +31,10 @@ const App: React.FC = () => {
       className="w-full h-[100dvh] overflow-hidden"
     >
       <SwiperSlide className="flex flex-col justify-evenly items-center h-full">
-        <div>
+        <header>
           <h1 className="text-3xl font-serif">CV Creator</h1>
           <h2 className="text-xl">(Work in progress!)</h2>
-        </div>
+        </header>
         <Home />
         <button type="button" className="text-xl" onClick={goToNextSlide}>
           Select

@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import screenfull from "screenfull";
-import Toolbar from "./Toolbar";
-import Template1 from "./templates/Template1";
+import Toolbar from "./preview/Toolbar";
+import Template1 from "./preview/templates/Template1";
 import {
   PersonalInfo,
   WorkExperience,
   Education,
   Skills,
-} from "./templates/initialValuesAndTypes";
+} from "./preview/templates/initialValuesAndTypes";
 
 type PreviewProps = {
   isSmallScreen: boolean;

@@ -1,8 +1,8 @@
-import zoomInSVG from "../assets/zoom-in.svg";
-import zoomOutSVG from "../assets/zoom-out.svg";
-import crossSVG from "../assets/cross.svg";
-import fullscreenSVG from "../assets/fullscreen.svg";
-import fullscreenExitSVG from "../assets/fullscreen-exit.svg";
+import zoomInSVG from "../../assets/zoom-in.svg";
+import zoomOutSVG from "../../assets/zoom-out.svg";
+import crossSVG from "../../assets/cross.svg";
+import fullscreenSVG from "../../assets/fullscreen.svg";
+import fullscreenExitSVG from "../../assets/fullscreen-exit.svg";
 
 type ToolbarProps = {
   zoomIn: () => void;

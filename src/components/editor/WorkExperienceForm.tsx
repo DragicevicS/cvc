@@ -1,13 +1,15 @@
-import { Education } from "../templates/initialValuesAndTypes";
+import { WorkExperience } from "../preview/templates/initialValuesAndTypes";
 
-type EducationProps = {
-  educationValuesArray: Education;
-  setEducationValuesArray: React.Dispatch<React.SetStateAction<Education>>;
+type WorkExperienceProps = {
+  workExperienceValuesArray: WorkExperience;
+  setWorkExperienceValuesArray: React.Dispatch<
+    React.SetStateAction<WorkExperience>
+  >;
 };
 
-const EducationForm: React.FC<EducationProps> = ({
-  educationValuesArray,
-  setEducationValuesArray,
+const WorkExperienceForm: React.FC<WorkExperienceProps> = ({
+  workExperienceValuesArray,
+  setWorkExperienceValuesArray,
 }) => {
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -15,89 +17,89 @@ const EducationForm: React.FC<EducationProps> = ({
   ) => {
     const { id, value } = e.target;
     const propertyName = id.replace(/\d+/g, "");
-    setEducationValuesArray((prevValues) =>
-      prevValues.map((education) =>
-        education.index === index
-          ? { ...education, [propertyName]: value }
-          : education
+    setWorkExperienceValuesArray((prevValues) =>
+      prevValues.map((workExp) =>
+        workExp.index === index
+          ? { ...workExp, [propertyName]: value }
+          : workExp
       )
     );
   };
 
-  const handleDeleteEducationForm = (index: number) => {
-    setEducationValuesArray((prevValues) =>
-      prevValues.filter((education) => education.index !== index)
+  const handleDeleteWorkExperienceForm = (index: number) => {
+    setWorkExperienceValuesArray((prevValues) =>
+      prevValues.filter((workExp) => workExp.index !== index)
     );
   };
 
   return (
     <>
-      {educationValuesArray.map((education) => (
+      {workExperienceValuesArray.map((workExp) => (
         <div
-          key={education.index}
+          key={workExp.index}
           className={`mb-1 pb-2 ${
-            educationValuesArray.length > 1 && "border-[1px] border-white"
+            workExperienceValuesArray.length > 1 && "border-[1px] border-white"
           }`}
         >
           <div className="flex flex-col items-center relative mt-4">
             <input
               type="text"
-              id={`degree${education.index}`}
+              id={`jobTitle${workExp.index}`}
               className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
               placeholder=" "
-              value={education.degree}
-              onChange={(e) => handleInputChange(e, education.index)}
+              value={workExp.jobTitle}
+              onChange={(e) => handleInputChange(e, workExp.index)}
             />
             <label
-              htmlFor={`degree${education.index}`}
+              htmlFor={`jobTitle${workExp.index}`}
               className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
             >
-              Degree
+              Job title
             </label>
           </div>
           <div className="flex flex-col items-center relative mt-4">
             <input
               type="text"
-              id={`institutionName${education.index}`}
+              id={`companyName${workExp.index}`}
               className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
               placeholder=" "
-              value={education.institutionName}
-              onChange={(e) => handleInputChange(e, education.index)}
+              value={workExp.companyName}
+              onChange={(e) => handleInputChange(e, workExp.index)}
             />
             <label
-              htmlFor={`institutionName${education.index}`}
+              htmlFor={`companyName${workExp.index}`}
               className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
             >
-              Institution name
+              Company name
             </label>
           </div>
           <div className="flex flex-col items-center relative mt-4">
             <input
               type="text"
-              id={`institutionLocation${education.index}`}
+              id={`companyLocation${workExp.index}`}
               className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
               placeholder=" "
-              value={education.institutionLocation}
-              onChange={(e) => handleInputChange(e, education.index)}
+              value={workExp.companyLocation}
+              onChange={(e) => handleInputChange(e, workExp.index)}
             />
             <label
-              htmlFor={`institutionLocation${education.index}`}
+              htmlFor={`companyLocation${workExp.index}`}
               className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
             >
-              Insitution location
+              Company location
             </label>
           </div>
           <div className="flex flex-col items-center relative mt-4">
             <input
               type="text"
-              id={`educationFrom${education.index}`}
+              id={`jobFrom${workExp.index}`}
               className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
               placeholder=" "
-              value={education.educationFrom}
-              onChange={(e) => handleInputChange(e, education.index)}
+              value={workExp.jobFrom}
+              onChange={(e) => handleInputChange(e, workExp.index)}
             />
             <label
-              htmlFor={`educationFrom${education.index}`}
+              htmlFor={`jobFrom${workExp.index}`}
               className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
             >
               From
@@ -106,14 +108,14 @@ const EducationForm: React.FC<EducationProps> = ({
           <div className="flex flex-col items-center relative mt-4">
             <input
               type="text"
-              id={`educationTo${education.index}`}
+              id={`jobTo${workExp.index}`}
               className="block pt-3.5 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
               placeholder=" "
-              value={education.educationTo}
-              onChange={(e) => handleInputChange(e, education.index)}
+              value={workExp.jobTo}
+              onChange={(e) => handleInputChange(e, workExp.index)}
             />
             <label
-              htmlFor={`educationTo${education.index}`}
+              htmlFor={`jobTo${workExp.index}`}
               className="absolute top-3 left-[5%] transform peer-placeholder-shown:translate-y-0 -translate-y-6 peer-focus:text-white peer-focus:-translate-y-6 peer-hover:-translate-y-6 ease-in-out duration-300 pointer-events-none"
             >
               To
@@ -121,25 +123,25 @@ const EducationForm: React.FC<EducationProps> = ({
           </div>
           <div className="flex flex-col-reverse items-center relative mt-4">
             <textarea
-              id={`educationDescription${education.index}`}
-              rows={3}
-              maxLength={200}
+              id={`jobDescription${workExp.index}`}
+              rows={6}
+              maxLength={400}
               className="block resize-none pt-1 pb-1.5 w-[90%] hover:w-[91%] focus:w-[91%] text-white bg-darkGray border-0 border-b-2 border-lightBlue appearance-none outline-none focus:ring-0 focus:border-white hover:border-white peer ease-in-out duration-300"
               placeholder=" "
-              value={education.educationDescription}
-              onChange={(e) => handleInputChange(e, education.index)}
+              value={workExp.jobDescription}
+              onChange={(e) => handleInputChange(e, workExp.index)}
             />
             <label
-              htmlFor={`educationDescription${education.index}`}
+              htmlFor={`jobDescription${workExp.index}`}
               className="w-[90%] text-left peer-focus:text-white"
             >
-              Education description
+              Job description
             </label>
           </div>
           <button
             type="button"
             className="mt-3.5 mr-3 ml-[5%] px-3 py-1 text-lg hover:bg-lightGray transition-all duration-500 ease"
-            onClick={() => handleDeleteEducationForm(education.index)}
+            onClick={() => handleDeleteWorkExperienceForm(workExp.index)}
           >
             Delete
           </button>
@@ -149,4 +151,4 @@ const EducationForm: React.FC<EducationProps> = ({
   );
 };
 
-export default EducationForm;
+export default WorkExperienceForm;

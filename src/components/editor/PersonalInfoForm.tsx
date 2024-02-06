@@ -1,4 +1,4 @@
-import { PersonalInfo } from "../templates/initialValuesAndTypes";
+import { PersonalInfo } from "../preview/templates/initialValuesAndTypes";
 
 type PersonalInfoFormProps = {
   personalInfoValues: PersonalInfo;

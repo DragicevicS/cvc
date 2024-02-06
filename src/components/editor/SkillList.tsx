@@ -1,6 +1,6 @@
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
-import { Skills } from "../templates/initialValuesAndTypes";
+import { Skills } from "../preview/templates/initialValuesAndTypes";
 import deleteIcon from "../../assets/delete.svg";
 import deleteHoverIcon from "../../assets/delete-hover.svg";
 

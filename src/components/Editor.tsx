@@ -5,16 +5,16 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import chevronImg from "../assets/chevron.svg";
-import PersonalInfoForm from "./forms/PersonalInfoForm";
-import WorkExperienceForm from "./forms/WorkExperienceForm";
-import EducationForm from "./forms/EducationForm";
-import SkillList from "./forms/SkillList";
+import PersonalInfoForm from "./editor/PersonalInfoForm";
+import WorkExperienceForm from "./editor/WorkExperienceForm";
+import EducationForm from "./editor/EducationForm";
+import SkillList from "./editor/SkillList";
 import {
   PersonalInfo,
   WorkExperience,
   Education,
   Skills,
-} from "./templates/initialValuesAndTypes";
+} from "./preview/templates/initialValuesAndTypes";
 import arrowLeftSVG from "../assets/arrow-left.svg";
 
 type EditorProps = {
@@ -186,7 +186,7 @@ const Editor: React.FC<EditorProps> = ({
                         educationValuesArray={educationValuesArray}
                         setEducationValuesArray={setEducationValuesArray}
                       />
-                      {educationValuesArray.length < 4 && (
+                      {educationValuesArray.length < 3 && (
                         <button
                           type="button"
                           className="mt-2 ml-auto mr-3 px-3 py-1 text-lg hover:bg-lightGray transition-all duration-500 ease"

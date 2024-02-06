@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import Editor from "./Editor";
-import Preview from "./Preview";
+import Editor from "../components/Editor";
+import Preview from "../components/Preview";
 import {
   PersonalInfo,
   initialPersonalInfo,
@@ -9,7 +9,7 @@ import {
   Education,
   initialEducationValues,
   Skills,
-} from "./templates/initialValuesAndTypes";
+} from "../components/preview/templates/initialValuesAndTypes";
 
 type CreatorProps = {
   goToPrevSlide: () => void;
